@@ -3541,7 +3541,7 @@ Copyright (c) 2015 Daniel Eden
 
 /** squares **/
 
-squares {
+@keyframes squares {
     0% {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -3621,7 +3621,7 @@ squares {
 
 /** service-hexagon **/
 
-service_hexagon_2 {
+@keyframes service_hexagon_2 {
     0% {
         -webkit-transform: rotateY(0deg);
         transform: rotateY(0deg)
@@ -3669,7 +3669,7 @@ service_hexagon_2 {
     }
 }
 
-service_hexagon {
+@keyframes service_hexagon {
     0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg)

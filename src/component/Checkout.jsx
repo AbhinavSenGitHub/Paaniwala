@@ -1,222 +1,41 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import Preloader from '../common/Preloader'
+import Header from '../common/Header'
+import axios from "axios"
+import { useForm } from 'react-hook-form';
 const Checkout = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:8080/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        
+      });
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log(responseData);
+      } else {
+        throw new Error('Failed to save data');
+      }
+    } catch (error) {
+      console.error('Error saving data:', error);
+    }
+  };
   return (
     <div>
       <div className="boxed_wrapper">
         {/* preloader */}
-        <div className="loader-wrap">
-          <div className="preloader">
-            <div className="preloader-close">Preloader Close</div>
-            <div id="handle-preloader" className="handle-preloader">
-              <div className="animation-preloader">
-                <div className="spinner" />
-                <div className="txt-loading">
-                  <span data-text-preloader="P" className="letters-loading">
-                    {" "}
-                    P{" "}
-                  </span>
-                  <span data-text-preloader="a" className="letters-loading">
-                    {" "}
-                    a{" "}
-                  </span>
-                  <span data-text-preloader="n" className="letters-loading">
-                    {" "}
-                    n{" "}
-                  </span>
-                  <span data-text-preloader="i" className="letters-loading">
-                    {" "}
-                    i{" "}
-                  </span>
-                  <span data-text-preloader="W" className="letters-loading">
-                    {" "}
-                    W{" "}
-                  </span>
-                  <span data-text-preloader="a" className="letters-loading">
-                    {" "}
-                    a{" "}
-                  </span>
-                  <span data-text-preloader="l" className="letters-loading">
-                    {" "}
-                    l{" "}
-                  </span>
-                  <span data-text-preloader="a" className="letters-loading">
-                    {" "}
-                    a{" "}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        {/* <Preloader/> */}
         {/* preloader end */}
         {/* main header */}
-        <header className="main-header">
-          {/* header-lower */}
-          <div className="header-lower">
-            <div
-              className="shape"
-              style={{ backgroundImage: "url(assets/images/shape/shape-1.png)" }}
-            />
-            <div className="outer-box">
-              <div className="logo-box">
-                <figure className="logo">
-                  <Link to="/">
-                    <img src="assets/images/logonav2PW.png" alt="" />
-                  </Link>
-                </figure>
-              </div>
-              <div className="menu-area clearfix">
-                {/*Mobile Navigation Toggler*/}
-                <div className="mobile-nav-toggler">
-                  <i className="icon-bar" />
-                  <i className="icon-bar" />
-                  <i className="icon-bar" />
-                </div>
-                <nav className="main-menu navbar-expand-md navbar-light">
-                  <div
-                    className="collapse navbar-collapse show clearfix"
-                    id="navbarSupportedContent"
-                  >
-                    <ul className="navigation clearfix">
-                      <li className="dropdown">
-                        <Link to="/">Shop</Link>
-                        <ul>
-                          <li>
-                            <Link href="/cart">Cart</Link>
-                          </li>
-                          <li>
-                            <Link href="/checkout">Checkout</Link>
-                          </li>
-                          <li>
-                            <Link href="/faq">Faq's</Link>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <Link href="/service">Services</Link>
-                      </li>
-                      <li>
-                        <Link href="blog.html">Blog</Link>
-                      </li>
-                      <li>
-                        <Link href="/contact">Contact</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-              <ul className="nav-right">
-                <li className="search-box-outer">
-                  <div className="dropdown">
-                    <button
-                      className="search-box-btn"
-                      type="button"
-                      id="dropdownMenu3"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i className="far fa-search" />
-                    </button>
-                    <div
-                      className="dropdown-menu search-panel"
-                      aria-labelledby="dropdownMenu3"
-                    >
-                      <div className="form-container">
-                        <form method="post" action="blog.html">
-                          <div className="form-group">
-                            <input
-                              type="search"
-                              name="search-field"
-                              defaultValue=""
-                              placeholder="Search...."
-                              required=""
-                            />
-                            <button type="submit" className="search-btn">
-                              <span className="fas fa-search" />
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className="cart-box">
-                  <Link href="/cart">
-                    <i className="fal fa-shopping-cart" />
-                    <span>3</span>
-                  </Link>
-                </li>
-                <li className="btn-box">
-                  <Link to="/" className="theme-btn btn-one">
-                    Request A Quote
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/*sticky Header*/}
-          <div className="sticky-header">
-            <div className="outer-box">
-              <div className="logo-box">
-                <figure className="logo">
-                  <Link to="/">
-                    <img src="assets/images/logonav2PW.png" alt="" />
-                  </Link>
-                </figure>
-              </div>
-              <div className="menu-area clearfix">
-                <nav className="main-menu clearfix">
-                  {/*Keep This Empty / Menu will come through Javascript*/}
-                </nav>
-              </div>
-              <ul className="nav-right">
-                <li className="search-box-outer">
-                  <div className="dropdown">
-                    <button
-                      className="search-box-btn"
-                      type="button"
-                      id="dropdownMenu4"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i className="far fa-search" />
-                    </button>
-                    <div
-                      className="dropdown-menu search-panel"
-                      aria-labelledby="dropdownMenu4"
-                    >
-                      <div className="form-container">
-                        <form method="post" action="blog.html">
-                          <div className="form-group">
-                            <input
-                              type="search"
-                              name="search-field"
-                              defaultValue=""
-                              placeholder="Search...."
-                              required=""
-                            />
-                            <button type="submit" className="search-btn">
-                              <span className="fas fa-search" />
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className="btn-box">
-                  <Link to="/" className="theme-btn btn-one">
-                    Request A Quote
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </header>
+        <Header />
         {/* main-header end */}
         {/* Mobile Menu  */}
         <div className="mobile-menu">
@@ -238,10 +57,10 @@ const Checkout = () => {
               <ul>
                 <li>Bhopal</li>
                 <li>
-                  <Link href="tel:+91 6265806504">+91 6265806504</Link>
+                  <Link to="tel:+91 6265806504">+91 6265806504</Link>
                 </li>
                 <li>
-                  <Link href="https://krishnacoderr.000webhostapp.com/">Portfolio</Link>
+                  <Link to="https://krishnacoderr.000webhostapp.com/">Portfolio</Link>
                 </li>
               </ul>
             </div>
@@ -307,11 +126,11 @@ const Checkout = () => {
                 <div className="upper-box">
                   <div className="customer single-box">
                     Returning Customer?
-                    <Link href="checkbox.html">Click here to Login</Link>
+                    <Link to="checkbox.html">Click here to Login</Link>
                   </div>
                   <div className="coupon single-box">
                     Have a Coupon?
-                    <Link href="checkbox.html">Click here to enter your code</Link>
+                    <Link to="checkbox.html">Click here to enter your code</Link>
                   </div>
                 </div>
               </div>
@@ -321,107 +140,147 @@ const Checkout = () => {
                 <div className="inner-box">
                   <div className="billing-info">
                     <h4 className="sub-title">Billing Details</h4>
-                    <form action="#" method="post" className="billing-form">
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="billing-form">
                       <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>First Name*</label>
                           <div className="field-input">
-                            <input type="text" name="first_name" />
+                            <input type="text" {...register("first_name", { required: "First Name is required" })} />
+                            {errors.first_name && <div>{errors.first_name.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>Last Name*</label>
                           <div className="field-input">
-                            <input type="text" name="last_name" />
+                            <input type="text" {...register("last_name", { required: "Last Name is required" })} />
+                            {errors.last_name && <div>{errors.last_name.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
                           <label>Company Name*</label>
                           <div className="field-input">
-                            <input type="text" name="company_name" />
+                            <input type="text" {...register("company_name", { required: "Company Name is required" })} />
+                            {errors.company_name && <div>{errors.company_name.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
                           <label>Email Address*</label>
                           <div className="field-input">
-                            <input type="email" name="email" />
+                            <input type="email" {...register("email", { required: "Email is required" })} />
+                            {errors.email && <div>{errors.email.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>Phone Number*</label>
                           <div className="field-input">
-                            <input type="text" name="phone" />
+                            <input type="text" {...register("phone", { required: "Phone Number is required" })} />
+                            {errors.phone && <div>{errors.phone.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>Country*</label>
                           <div className="select-column select-box">
-                            <select className="selectmenu" id="ui-id-1">
-                              <option selected="selected">Select Option</option>
-                              <option>United State</option>
-                              <option>Australia</option>
-                              <option>Canada</option>
+                            <select className="selectmenu" {...register("country", { required: "Country is required" })}>
+                              <option value="" disabled>Select Option</option>
+                              <option value="United States">United States</option>
+                              <option value="Australia">Australia</option>
+                              <option value="Canada">Canada</option>
                             </select>
+                            {errors.country && <div>{errors.country.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
                           <label>Address*</label>
                           <div className="field-input">
-                            <input type="text" name="address" className="address" />
-                            <input type="text" name="address" />
+                            <input type="text" {...register("address", { required: "Address is required" })} className="address" />
+                            {errors.address && <div>{errors.address.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
                           <label>Town/City*</label>
                           <div className="field-input">
-                            <input type="text" name="town_city" />
+                            <input type="text" {...register("town_city", { required: "Town/City is required" })} />
+                            {errors.town_city && <div>{errors.town_city.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>State*</label>
                           <div className="select-column select-box">
-                            <select className="selectmenu" id="ui-id-2">
-                              <option selected="selected">Select Option</option>
-                              <option>United State</option>
-                              <option>Australia</option>
-                              <option>Canada</option>
+                            <select className="selectmenu" {...register("state", { required: "State is required" })}>
+                              <option value="" disabled>Select Option</option>
+                              <option value="New York">New York</option>
+                              <option value="California">California</option>
+                              <option value="Texas">Texas</option>
                             </select>
+                            {errors.state && <div>{errors.state.message}</div>}
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
                           <label>Zip Code*</label>
                           <div className="field-input">
-                            <input type="text" name="zip" />
+                            <input type="text" {...register("zip", { required: "Zip Code is required" })} />
+                            {errors.zip && <div>{errors.zip.message}</div>}
                           </div>
                         </div>
                         <div className="form-group col-lg-12 col-md-12 col-sm-12">
                           <div className="create-acc">
                             <div className="custom-controls-stacked">
-                              <label className="custom-control material-checkbox">
-                                <input
-                                  type="checkbox"
-                                  className="material-control-input"
-                                />
-                                <span className="material-control-indicator" />
-                                <span className="description">
-                                  Create an Account?
-                                </span>
-                              </label>
+
                             </div>
                           </div>
                         </div>
+                        <div className="payment-info">
+                          <h4 className="sub-title">Payment Proccess</h4>
+                          <div className="payment-inner">
+                            <div className="option-block">
+                              <div className="custom-controls-stacked">
+                                <label className="custom-control material-checkbox">
+                                  <input
+                                    name="payment_method"
+                                    type="radio"
+                                    value="direct_bank_transfer"
+                                    {...register("payment_method")}
+                                    className="material-control-input"
+                                  />
+                                  <span className="material-control-indicator" />
+                                  <span className="description">Direct bank transfer</span>
+                                </label>
+                              </div>
+                              <p>
+                                Please send a check to Store Name, Store Street, Store Town,
+                                Store State / County, Store Postcode.
+                              </p>
+                            </div>
+                            <div className="option-block">
+                              <div className="custom-controls-stacked">
+                                <label className="custom-control material-checkbox">
+                                  <input
+                                    name="payment_method"
+                                    type="radio"
+                                    value="cash"
+                                    {...register("payment_method")}
+                                    className="material-control-input"
+                                  />
+                                  <span className="material-control-indicator" />
+                                  <span className="description">
+                                    Cash
+                                  </span>
+                                </label>
+                              </div>
+                            </div>
+                            <div className="btn-box">
+                              {/* <Link to="/checkout" > */}
+                              <button type="submit" className="theme-btn btn-one">Place Your Order</button>
+                                
+                              {/* </Link> */}
+                            </div>
+                          </div>
+                        </div>
+
+
                       </div>
                     </form>
-                  </div>
-                  <div className="additional-info">
-                    <div className="note-book">
-                      <label>Order Notes</label>
-                      <textarea
-                        name="note_box"
-                        placeholder="Notes about your order, e.g. special notes for your delivery"
-                        defaultValue={""}
-                      />
-                    </div>
                   </div>
                 </div>
               </div>
@@ -476,46 +335,7 @@ const Checkout = () => {
                       </ul>
                     </div>
                   </div>
-                  <div className="payment-info">
-                    <h4 className="sub-title">Payment Proccess</h4>
-                    <div className="payment-inner">
-                      <div className="option-block">
-                        <div className="custom-controls-stacked">
-                          <label className="custom-control material-checkbox">
-                            <input
-                              type="checkbox"
-                              className="material-control-input"
-                            />
-                            <span className="material-control-indicator" />
-                            <span className="description">Direct bank transfer</span>
-                          </label>
-                        </div>
-                        <p>
-                          Please send a check to Store Name, Store Street, Store Town,
-                          Store State / County, Store Postcode.
-                        </p>
-                      </div>
-                      <div className="option-block">
-                        <div className="custom-controls-stacked">
-                          <label className="custom-control material-checkbox">
-                            <input
-                              type="checkbox"
-                              className="material-control-input"
-                            />
-                            <span className="material-control-indicator" />
-                            <span className="description">
-                              Paypal<Link href="/checkout">What is paypal?</Link>
-                            </span>
-                          </label>
-                        </div>
-                      </div>
-                      <div className="btn-box">
-                        <Link href="/checkout" className="theme-btn btn-one">
-                          Place Your Order
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -550,7 +370,7 @@ const Checkout = () => {
                 </h2>
               </div>
               <div className="support-box pull-right">
-                <Link href="tel:7732253523">
+                <Link to="tel:7732253523">
                   <i className="fas fa-phone" />
                   (773) 225-3523
                 </Link>
@@ -593,11 +413,11 @@ const Checkout = () => {
                         <li>
                           <i className="fal fa-phone" />
                           Call Us:
-                          <Link href="tel:3336660001">333-666-0001</Link>
+                          <Link to="tel:3336660001">333-666-0001</Link>
                         </li>
                         <li>
                           <i className="fal fa-envelope-open-text" />
-                          <Link href="mailto:info@example.com">info@example.com</Link>
+                          <Link to="mailto:info@example.com">info@example.com</Link>
                         </li>
                       </ul>
                     </div>

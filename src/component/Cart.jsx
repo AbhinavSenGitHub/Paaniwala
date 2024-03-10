@@ -1,222 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Preloader from '../common/Preloader'
+import Header from '../common/Header'
 
 const Cart = () => {
   return (
     <div>
       <div className="boxed_wrapper">
         {/* preloader */}
-        <div className="loader-wrap">
-          <div className="preloader">
-            <div className="preloader-close">Preloader Close</div>
-            <div id="handle-preloader" className="handle-preloader">
-              <div className="animation-preloader">
-                <div className="spinner" />
-                <div className="txt-loading">
-                  <span data-text-preloader="P" className="letters-loading">
-                    {" "}
-                    P{" "}
-                  </span>
-                  <span data-text-preloader="a" className="letters-loading">
-                    {" "}
-                    a{" "}
-                  </span>
-                  <span data-text-preloader="n" className="letters-loading">
-                    {" "}
-                    n{" "}
-                  </span>
-                  <span data-text-preloader="i" className="letters-loading">
-                    {" "}
-                    i{" "}
-                  </span>
-                  <span data-text-preloader="W" className="letters-loading">
-                    {" "}
-                    W{" "}
-                  </span>
-                  <span data-text-preloader="a" className="letters-loading">
-                    {" "}
-                    a{" "}
-                  </span>
-                  <span data-text-preloader="l" className="letters-loading">
-                    {" "}
-                    l{" "}
-                  </span>
-                  <span data-text-preloader="a" className="letters-loading">
-                    {" "}
-                    a{" "}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        {/* <Preloader/> */}
+
         {/* preloader end */}
         {/* main header */}
-        <header className="main-header">
-          {/* header-lower */}
-          <div className="header-lower">
-            <div
-              className="shape"
-              style={{ backgroundImage: "url(assets/images/shape/shape-1.png)" }}
-            />
-            <div className="outer-box">
-              <div className="logo-box">
-                <figure className="logo">
-                  <Link to="/">
-                    <img src="assets/images/logonav2PW.png" alt="" />
-                  </Link>
-                </figure>
-              </div>
-              <div className="menu-area clearfix">
-                {/*Mobile Navigation Toggler*/}
-                <div className="mobile-nav-toggler">
-                  <i className="icon-bar" />
-                  <i className="icon-bar" />
-                  <i className="icon-bar" />
-                </div>
-                <nav className="main-menu navbar-expand-md navbar-light">
-                  <div
-                    className="collapse navbar-collapse show clearfix"
-                    id="navbarSupportedContent"
-                  >
-                    <ul className="navigation clearfix">
-                      <li className="dropdown">
-                        <Link to="/">Shop</Link>
-                        <ul>
-                          <li>
-                            <Link href="/cart">Cart</Link>
-                          </li>
-                          <li>
-                            <Link href="/checkout">Checkout</Link>
-                          </li>
-                          <li>
-                            <Link href="/faq">Faq's</Link>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <Link href="/service">Services</Link>
-                      </li>
-                      <li>
-                        <Link href="blog.html">Blog</Link>
-                      </li>
-                      <li>
-                        <Link href="/contact">Contact</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
-              <ul className="nav-right">
-                <li className="search-box-outer">
-                  <div className="dropdown">
-                    <button
-                      className="search-box-btn"
-                      type="button"
-                      id="dropdownMenu3"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i className="far fa-search" />
-                    </button>
-                    <div
-                      className="dropdown-menu search-panel"
-                      aria-labelledby="dropdownMenu3"
-                    >
-                      <div className="form-container">
-                        <form method="post" action="blog.html">
-                          <div className="form-group">
-                            <input
-                              type="search"
-                              name="search-field"
-                              defaultValue=""
-                              placeholder="Search...."
-                              required=""
-                            />
-                            <button type="submit" className="search-btn">
-                              <span className="fas fa-search" />
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className="cart-box">
-                  <Link href="/cart">
-                    <i className="fal fa-shopping-cart" />
-                    <span>3</span>
-                  </Link>
-                </li>
-                <li className="btn-box">
-                  <Link to="/" className="theme-btn btn-one">
-                    Request A Quote
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/*sticky Header*/}
-          <div className="sticky-header">
-            <div className="outer-box">
-              <div className="logo-box">
-                <figure className="logo">
-                  <Link to="/">
-                    <img src="assets/images/logonav2PW.png" alt="" />
-                  </Link>
-                </figure>
-              </div>
-              <div className="menu-area clearfix">
-                <nav className="main-menu clearfix">
-                  {/*Keep This Empty / Menu will come through Javascript*/}
-                </nav>
-              </div>
-              <ul className="nav-right">
-                <li className="search-box-outer">
-                  <div className="dropdown">
-                    <button
-                      className="search-box-btn"
-                      type="button"
-                      id="dropdownMenu4"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i className="far fa-search" />
-                    </button>
-                    <div
-                      className="dropdown-menu search-panel"
-                      aria-labelledby="dropdownMenu4"
-                    >
-                      <div className="form-container">
-                        <form method="post" action="blog.html">
-                          <div className="form-group">
-                            <input
-                              type="search"
-                              name="search-field"
-                              defaultValue=""
-                              placeholder="Search...."
-                              required=""
-                            />
-                            <button type="submit" className="search-btn">
-                              <span className="fas fa-search" />
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className="btn-box">
-                  <Link to="/" className="theme-btn btn-one">
-                    Request A Quote
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </header>
+        <Header/>
         {/* main-header end */}
         {/* Mobile Menu  */}
         <div className="mobile-menu">
@@ -238,10 +35,10 @@ const Cart = () => {
               <ul>
                 <li>Bhopal</li>
                 <li>
-                  <Link href="tel:+91 6265806504">+91 6265806504</Link>
+                  <Link to="tel:+91 6265806504">+91 6265806504</Link>
                 </li>
                 <li>
-                  <Link href="https://krishnacoderr.000webhostapp.com/">Portfolio</Link>
+                  <Link to="https://krishnacoderr.000webhostapp.com/">Portfolio</Link>
                 </li>
               </ul>
             </div>
@@ -431,7 +228,7 @@ const Cart = () => {
                         Order Total:<span>$150.50</span>
                       </li>
                     </ul>
-                    <Link href="/cart" className="theme-btn btn-one">
+                    <Link to="/checkout" className="theme-btn btn-one">
                       Proceed to Checkout
                     </Link>
                   </div>
@@ -469,7 +266,7 @@ const Cart = () => {
                 </h2>
               </div>
               <div className="support-box pull-right">
-                <Link href="tel:7732253523">
+                <Link to="tel:7732253523">
                   <i className="fas fa-phone" />
                   (773) 225-3523
                 </Link>
@@ -512,11 +309,11 @@ const Cart = () => {
                         <li>
                           <i className="fal fa-phone" />
                           Call Us:
-                          <Link href="tel:3336660001">333-666-0001</Link>
+                          <Link to="tel:3336660001">333-666-0001</Link>
                         </li>
                         <li>
                           <i className="fal fa-envelope-open-text" />
-                          <Link href="mailto:info@example.com">info@example.com</Link>
+                          <Link to="mailto:info@example.com">info@example.com</Link>
                         </li>
                       </ul>
                     </div>
