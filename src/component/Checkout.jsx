@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Preloader from '../common/Preloader'
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import Header from '../common/Header'
-import axios from "axios"
 import { useForm } from 'react-hook-form';
 const Checkout = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const [orderId, setOrderId] = useState(null);
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       const response = await fetch('http://localhost:8080/api/checkout', {
         method: 'POST',
@@ -15,11 +15,13 @@ const Checkout = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-        
       });
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
+        console.log(responseData)
+        const orderId = responseData.orderId;
+        console.log(orderId)
+        navigate(`/success/${orderId}`);
       } else {
         throw new Error('Failed to save data');
       }
@@ -183,7 +185,7 @@ const Checkout = () => {
                           <div className="select-column select-box">
                             <select className="selectmenu" {...register("country", { required: "Country is required" })}>
                               <option value="" disabled>Select Option</option>
-                              <option value="United States">United States</option>
+                              <option value="United States">India</option>
                               <option value="Australia">Australia</option>
                               <option value="Canada">Canada</option>
                             </select>
@@ -209,7 +211,7 @@ const Checkout = () => {
                           <div className="select-column select-box">
                             <select className="selectmenu" {...register("state", { required: "State is required" })}>
                               <option value="" disabled>Select Option</option>
-                              <option value="New York">New York</option>
+                              <option value="Madhya Pradesh">Madhya Pradesh</option>
                               <option value="California">California</option>
                               <option value="Texas">Texas</option>
                             </select>
@@ -270,15 +272,10 @@ const Checkout = () => {
                               </div>
                             </div>
                             <div className="btn-box">
-                              {/* <Link to="/checkout" > */}
                               <button type="submit" className="theme-btn btn-one">Place Your Order</button>
-                                
-                              {/* </Link> */}
                             </div>
                           </div>
                         </div>
-
-
                       </div>
                     </form>
                   </div>
@@ -297,40 +294,20 @@ const Checkout = () => {
                         <li>
                           <div className="single-box clearfix">
                             <img
-                              src="assets/images/resource/shop/order-1.jpg"
-                              alt=""
-                            />
-                            <h6>Mineral Water Bottle x 1</h6>
-                            <span>$35.00</span>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="single-box clearfix">
-                            <img
-                              src="assets/images/resource/shop/order-2.jpg"
-                              alt=""
-                            />
-                            <h6>Mineral Water Bottle x 1</h6>
-                            <span>$25.00</span>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="single-box clearfix">
-                            <img
                               src="assets/images/resource/shop/order-3.jpg"
                               alt=""
                             />
-                            <h6>Mineral Water Bottle x 1</h6>
-                            <span>$90.00</span>
+                            <h6>Normal Water Bottle x 2</h6>
+                            <span>$80.00</span>
                           </div>
                         </li>
                         <li className="sub-total clearfix">
                           <h6>Sub Total</h6>
-                          <span>$150.50</span>
+                          <span>₹80.00</span>
                         </li>
                         <li className="order-total clearfix">
                           <h6>Order Total</h6>
-                          <span>$150.50</span>
+                          <span>₹80.00</span>
                         </li>
                       </ul>
                     </div>

@@ -1,0 +1,40 @@
+.certification-div{
+    height: 100vh;
+    width: 100%;
+    padding: 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.brand-name{
+    font-size: 40px;
+    font-weight: 400;
+    color: #007bff
+}
+.quality-div{
+    width: 100%;
+    text-align: center;
+    padding: 5vw;
+}
+.certification-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1vw;  
+    border-bottom: 3px solid #007bff;
+}
+.certifcated-footer{
+    padding-top: 5vw;
+}
+
+@media (max-width: 533px) {
+    .brand-name{
+        font-size: 35px;
+    }
+}
+@media (max-width: 430px) {
+    .brand-name{
+        font-size: 25px;
+    }
+}

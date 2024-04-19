@@ -127,21 +127,21 @@ const Cart = () => {
                                 alt=""
                               />
                             </div>
-                            <div className="prod-title">Mineral Water Bottle</div>
+                            <div className="prod-title">Normal Water Bottle</div>
                           </div>
                         </td>
-                        <td className="price">$35.00</td>
+                        <td className="price">₹30.00</td>
                         <td className="qty">
                           <div className="item-quantity">
                             <input
                               className="quantity-spinner"
                               type="text"
-                              defaultValue={1}
+                              defaultValue={2}
                               name="quantity"
                             />
                           </div>
                         </td>
-                        <td className="sub-total">$35.00</td>
+                        <td className="sub-total">₹30.00</td>
                       </tr>
                       <tr>
                         <td colSpan={4} className="prod-column">
@@ -155,21 +155,21 @@ const Cart = () => {
                                 alt=""
                               />
                             </div>
-                            <div className="prod-title">Mineral Water Bottle</div>
+                            <div className="prod-title">Child Water Bottle</div>
                           </div>
                         </td>
-                        <td className="price">$40.00</td>
+                        <td className="price">₹40.00</td>
                         <td className="qty">
                           <div className="item-quantity">
                             <input
                               className="quantity-spinner"
                               type="text"
-                              defaultValue={1}
+                              defaultValue={0}
                               name="quantity"
                             />
                           </div>
                         </td>
-                        <td className="sub-total">$40.00</td>
+                        <td className="sub-total">₹40.00</td>
                       </tr>
                       <tr>
                         <td colSpan={4} className="prod-column">
@@ -186,18 +186,18 @@ const Cart = () => {
                             <div className="prod-title">Mineral Water Bottle</div>
                           </div>
                         </td>
-                        <td className="price">$45.00</td>
+                        <td className="price">₹100.00</td>
                         <td className="qty">
                           <div className="item-quantity">
                             <input
                               className="quantity-spinner"
                               type="text"
-                              defaultValue={1}
+                              defaultValue={0}
                               name="quantity"
                             />
                           </div>
                         </td>
-                        <td className="sub-total">$45.00</td>
+                        <td className="sub-total">₹100.00</td>
                       </tr>
                     </tbody>
                   </table>
@@ -222,10 +222,10 @@ const Cart = () => {
                     <h6>Cart Totals</h6>
                     <ul className="list clearfix">
                       <li>
-                        Subtotal:<span>$150.50</span>
+                        Subtotal:<span>₹60.50</span>
                       </li>
                       <li>
-                        Order Total:<span>$150.50</span>
+                        Order Total:<span>₹60.50</span>
                       </li>
                     </ul>
                     <Link to="/checkout" className="theme-btn btn-one">

@@ -450,7 +450,7 @@ const Index = () => {
                       <h4>
                         <Link to="shop-details.html">Normal Water Bottle</Link>
                       </h4>
-                      <h6>₹30.00</h6>
+                      <h6>₹40.00</h6>
                       <p>
                         Lorem ipsum dolor sit amet adipelit sed eiusmte.mpor encid
                         dolore.
@@ -488,7 +488,7 @@ const Index = () => {
                       <h4>
                         <Link to="shop-details.html">Chilled Water Bottle</Link>
                       </h4>
-                      <h6>₹35.00</h6>
+                      <h6>₹50.00</h6>
                       <p>
                         Lorem ipsum dolor sit amet adipelit sed eiusmte.mpor encid
                         dolore.

@@ -8,6 +8,8 @@ import Contact from './component/Contact'
 import Error from './component/Error'
 import Faq from './component/Faq'
 import Service from './component/Service'
+import OrderSuccess from './component/Success';
+import Certificate from "./component/Certificate"
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route path="/error" element={<Error />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/service" element={<Service />} />
+            <Route path="/Certificate" element={<Certificate />} />
+            <Route path="/success/:id" element={<OrderSuccess />} />
           </Routes>
         </div>
       </Router>
